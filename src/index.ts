@@ -1,13 +1,13 @@
 import express from "express"; 
 const app = express(); 
+const cors = require('cors');
 import connectDB from "./Loaders/db";
 import routes from './routes';
 
 connectDB();
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());  
-
+app.use(cors());
 app.use(routes);   //라우터 
 // error handler
 app.use(function (err, req, res, next) {

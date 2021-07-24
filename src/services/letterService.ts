@@ -3,7 +3,7 @@ import { ILetter } from "../interfaces/ILetter";
 
 const getAllLetter = async () => {
     try {
-        const letters = Letter.find();
+        const letters = Letter.find().sort({ createdAt: -1 });
         return letters;
     } catch (error) {
         console.log(error);
@@ -12,12 +12,12 @@ const getAllLetter = async () => {
 };
 
 const addLetter = async (data: ILetter) => {
-    const { name, letter } = data;
+    const { name, letter, avartar } = data;
     try {
         const newLetter = await Letter.create({
-            name, letter
+            name, letter, avartar
         });
-        const allLetters = await Letter.find();
+        const allLetters = await Letter.find().sort({ createdAt: -1 });
         return allLetters;
     } catch (error) {
         console.log(error);

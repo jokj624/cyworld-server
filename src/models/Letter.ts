@@ -9,7 +9,15 @@ const LetterSchema = new mongoose.Schema({
     letter: {
         type: String,
         required: true
-    }
+    },
+    avartar: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
 });
 
 export default mongoose.model<ILetter & mongoose.Document>("Letter", LetterSchema);
